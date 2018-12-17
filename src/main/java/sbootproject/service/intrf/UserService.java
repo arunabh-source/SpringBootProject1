@@ -8,6 +8,6 @@ public interface UserService extends UserDetailsService {
 
 	UserDto createUser(UserDto user);
 	
-	UserDetails loadUserByUsername(String email) throws Exception;
+//	UserDetails loadByUsername(String email) throws Exception;
 
 }
