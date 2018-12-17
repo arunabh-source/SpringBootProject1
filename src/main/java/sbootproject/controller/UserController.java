@@ -14,18 +14,20 @@ import sbootproject.service.intrf.UserService;
 import sbootproject.shared.dto.UserDto;
 
 @RestController   
+@RequestMapping(path="/users")
 public class UserController {
 		
 	@Autowired
 	UserService userService;	
 
-		@RequestMapping(path="/getReq")
+//		@RequestMapping(path="/getReq")
 		public String something() {
 			return "hello from something";
 		}
 	
-	    @CrossOrigin(origins = "http://localhost:3000")
-	    @PostMapping(path="/postMethod")
+//	    @CrossOrigin(origins = "http://localhost:3000")
+//	    @PostMapping(path="/postMethod")
+		@PostMapping
 	    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {	
 	    	UserRest returnValue = new UserRest();
 	    	

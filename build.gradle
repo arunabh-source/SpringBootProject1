@@ -6,6 +6,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
+		compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2.0'
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
@@ -22,7 +23,6 @@ sourceCompatibility = 1.8
 repositories {
 	mavenCentral()
 }
-
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
