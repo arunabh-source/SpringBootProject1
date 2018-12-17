@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserDetails loadUserByUsername(String email) throws Exception {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		UserEntity userEntity = userRepository.findUserByEmail(email);
 		
 		if(userEntity == null) throw new UsernameNotFoundException(email);
