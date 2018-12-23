@@ -1,6 +1,8 @@
 package sbootproject.model.response;
 
 public class UserRest {
+	
+	private String userId;
 
     private String firstname;
     
@@ -40,6 +42,14 @@ public class UserRest {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 }

@@ -7,7 +7,9 @@ import sbootproject.shared.dto.UserDto;
 public interface UserService extends UserDetailsService {
 
 	UserDto createUser(UserDto user);
+	
+	UserDto getUser(String email);
 
-	//UserDetails loadUserByUsername(String email) throws Exception;
+	UserDto getUserByUserId(String userId) throws Exception;
 
 }

@@ -10,8 +10,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import exceptions.UserServiceException;
 import sbootproject.UserRepository;
 import sbootproject.entity.UserEntity;
+import sbootproject.model.response.ErrorMessages;
 import sbootproject.service.intrf.UserService;
 import sbootproject.shared.dto.UserDto;
 import sbootproject.shared.utils.Utils;
@@ -59,6 +61,36 @@ public class UserServiceImpl implements UserService {
 		if(userEntity == null) throw new UsernameNotFoundException(email);
 		
 		return new User(userEntity.getEmail(), userEntity.getEncryptedPassword(), new ArrayList<>());
+	}
+
+	@Override
+	public UserDto getUserByUserId(String userId) throws Exception {
+		UserDto returnValue = new UserDto();
+		UserEntity userEntity = userRepository.findByUserId(userId);
+
+		if (userEntity == null) throw new UserServiceException(ErrorMessages.BULLSHIT_REQUEST.getErrorMessage());
+			
+//			throw new UsernameNotFoundException("User with ID: " + userId + " not found");
+		
+			
+
+		BeanUtils.copyProperties(userEntity, returnValue);
+
+		return returnValue;
+	}
+
+
+	@Override
+	public UserDto getUser(String email) {
+		UserEntity userEntity = userRepository.findByEmail(email);
+
+		if (userEntity == null)
+			throw new UsernameNotFoundException(email);
+
+		UserDto returnValue = new UserDto();
+		BeanUtils.copyProperties(userEntity, returnValue);
+ 
+		return returnValue;
 	}
 
 }
