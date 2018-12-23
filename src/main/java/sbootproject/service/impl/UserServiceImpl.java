@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
 		userEntity.setUserId(publicUserId);
 		userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		
+				
 		UserEntity storedUserDetails = userRepository.save(userEntity);
 		
 		UserDto returnValue = new UserDto();
@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDto getUserByUserId(String userId) throws Exception {
+	public UserDto getUserByUserId(String userId) {
 		UserDto returnValue = new UserDto();
 		UserEntity userEntity = userRepository.findByUserId(userId);
 
@@ -92,5 +92,43 @@ public class UserServiceImpl implements UserService {
  
 		return returnValue;
 	}
+
+
+	@Override
+	public UserDto updateUser(String userId, UserDto user) {
+		UserDto returnValue = new UserDto();
+
+		UserEntity userEntity = userRepository.findByUserId(userId);
+
+		if (userEntity == null)
+			throw new UserServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+		
+		userEntity.setFirstname(user.getFirstname());
+		userEntity.setLastname(user.getLastname());
+		
+		System.out.println(userEntity.getFirstname());
+
+		
+		UserEntity updatedUserDetails = userRepository.save(userEntity);
+		
+		BeanUtils.copyProperties(updatedUserDetails, returnValue);
+		
+//		returnValue = new ModelMapper().map(updatedUserDetails, UserDto.class);
+
+		return returnValue;
+	}
+
+	@Override
+	public void deleteUser(String userId) {
+		
+		UserEntity userEntity = userRepository.findByUserId(userId);
+		if (userEntity == null)
+			throw new UserServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+		
+		userRepository.delete(userEntity);
+		
+	}
+	
+	
 
 }

@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import sbootproject.security.WebSecurity;
 
 @SpringBootApplication
-
 public class SBootJpaProject1Application {
 
 	public static void main(String[] args) {
