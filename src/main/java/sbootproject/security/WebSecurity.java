@@ -19,16 +19,17 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 			this.userDetailsService = userDetailsService;
 			this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
+		http.csrf().disable()
+					.authorizeRequests()
+					.antMatchers(HttpMethod.POST, SecurityConstants.SIGN_UP_URL)
 					.permitAll()
 					.anyRequest()
-					.authenticated();
-					
-//					.and()
-//					.addFilter(new AuthenticationFilter(authenticationManager()));
+					.authenticated()					
+					.and()
+					.addFilter(new AuthenticationFilter(authenticationManager()));
 
 //TURNING SPRING SECURITY OFF
 //		.antMatchers("/users")					
