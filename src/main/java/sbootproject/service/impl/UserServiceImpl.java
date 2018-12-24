@@ -11,9 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import exceptions.UserServiceException;
-import sbootproject.UserRepository;
 import sbootproject.entity.UserEntity;
 import sbootproject.model.response.ErrorMessages;
+import sbootproject.repositories.UserRepository;
 import sbootproject.service.intrf.UserService;
 import sbootproject.shared.dto.UserDto;
 import sbootproject.shared.utils.Utils;

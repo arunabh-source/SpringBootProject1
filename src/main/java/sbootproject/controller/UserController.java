@@ -41,7 +41,8 @@ public class UserController {
 			
 			return returnValue;
 		}
-	
+		
+		
 	    @CrossOrigin(origins = "http://localhost:3000")
 		@PostMapping
 	    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {	
