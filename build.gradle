@@ -31,6 +31,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('org.springframework.boot:spring-boot-starter-security')
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
 	runtimeOnly('mysql:mysql-connector-java')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	testImplementation('org.springframework.security:spring-security-test')
