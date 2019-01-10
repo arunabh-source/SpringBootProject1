@@ -40,15 +40,15 @@ public class UserServiceImpl implements UserService {
 	public UserDto createUser(UserDto user) {
 				
 		if(userRepository.findByEmail(user.getEmail()) != null) throw new RuntimeException("Record already exists");
-		
-		for(int i=0; i<user.getAddresses().size();i++)
-		{
-			AddressDTO address = user.getAddresses().get(i);
-			address.setUserDetails(user);
-			address.setAddressId(utils.generateAddressId(30));
-			user.getAddresses().set(i, address);
-		}
-		
+				
+			for(int i=0; i<user.getAddresses().size();i++)
+			{
+				AddressDTO address = user.getAddresses().get(i);
+				address.setUserDetails(user);
+				address.setAddressId(utils.generateAddressId(30));
+				user.getAddresses().set(i, address);
+			}
+					
 		ModelMapper modelMapper = new ModelMapper();
 		UserEntity userEntity = modelMapper.map(user, UserEntity.class);
 

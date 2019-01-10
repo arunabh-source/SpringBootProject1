@@ -1,7 +1,5 @@
 package sbootproject.shared.dto;
 
-import java.util.List;
-
 public class AddressDTO {
 	
 	private long id;
